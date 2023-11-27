@@ -1,0 +1,64 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.row {
+    max-width: 100%;
+}
+
+/*PARTE HEADER*/
+
+.header-bg {
+    background-color: rgb(10, 10, 10);
+    color: white;
+}
+
+/*PARTE MAIN*/
+
+.bg-main1 {
+    background-color: rgb(42, 208, 242);
+}
+
+.bg-main2 {
+    background-color: rgb(255, 255, 255);
+}
+
+.bg-form {
+    background-color: rgb(42, 208, 242);
+}
+
+#portofoliopic {
+    width: 20%;
+    height: auto;
+}
+
+/*PARTE CARDS*/
+
+.card-body-1 {
+    background-color: rgb(255, 255, 255);
+}
+
+.card {
+    margin-bottom: 4rem;
+    border: 0;
+    box-shadow: 0px 0px 8px 0.3px rgb(124, 123, 123);
+    width: 80%;
+    min-width: 80%;
+}
+
+  .card-img-top {
+
+  }
+
+  .btn-bg {
+    background-color:rgb(42, 208, 242);
+  }
+
+
+  /*PARTE FOOTER*/
+
+.bg-footer {
+    background-color: rgb(26, 28, 29);
+}

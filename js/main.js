@@ -30,7 +30,6 @@ function totalPrice() {
     };
 
     let totalHourPrice = hourPrice[typeOfWork];
-    console.log(totalHourPrice);
 
     let requestedHours = parseFloat(document.getElementById("inputHours").value) || 0;
 
@@ -47,7 +46,6 @@ function totalPrice() {
         { code: "POCIE24", discount: 0.75 },
     ];
 
-
     for (let i = 0; i < discountCodes.length; i++) {
         if (discountCodes[i].code === discountCode) {
             discount = discountCodes[i].discount;
@@ -57,7 +55,7 @@ function totalPrice() {
 
     let totalPrice = (totalHourPrice * requestedHours * discount).toFixed(2);
     totalPrice = parseFloat(totalPrice);
-
+    console.log("---RESOCONTO---")
     console.log("Tipo di lavoro: " + typeOfWork);
     console.log("Tariffa oraria: " + totalHourPrice);
     console.log("Ore richieste: " + requestedHours);

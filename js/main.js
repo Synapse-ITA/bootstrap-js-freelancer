@@ -10,12 +10,18 @@ SJDPO96
 POCIE24
 */
 
+// CODICI SCONTO
 
-let backendPrice = 20.50;
-let frontendPrice = 15.30;
-let projectAnalysisPrice = 33.60;
 
-function totalPrice (){
+
+
+
+
+
+// FUNZIONE FORM
+
+function totalPrice() {
+    event.preventDefault()
     let typeOfWork = document.getElementById("inputTypeWork").value;
     let hourPrice = {
         "FrontEnd": 15.30,
@@ -28,12 +34,38 @@ function totalPrice (){
 
     let requestedHours = parseFloat(document.getElementById("inputHours").value) || 0;
 
-    let totalPrice = totalHourPrice * requestedHours;
+    // PARTE DISCOUNT
+    let discountCode = document.getElementById("inputDiscount").value;
+
+    let discount = 1;
+
+    let discountCodes = [
+        { code: "YHDNU32", discount: 0.75 },
+        { code: "JANJC63", discount: 0.75 },
+        { code: "PWKCN25", discount: 0.75 },
+        { code: "SJDPO96", discount: 0.75 },
+        { code: "POCIE24", discount: 0.75 },
+    ];
+
+
+    for (let i = 0; i < discountCodes.length; i++) {
+        if (discountCodes[i].code === discountCode) {
+            discount = discountCodes[i].discount;
+            break;
+        }
+    }
+
+    let totalPrice = (totalHourPrice * requestedHours * discount).toFixed(2);
+    totalPrice = parseFloat(totalPrice);
 
     console.log("Tipo di lavoro: " + typeOfWork);
     console.log("Tariffa oraria: " + totalHourPrice);
     console.log("Ore richieste: " + requestedHours);
     console.log("Costo totale: " + totalPrice);
+    console.log("Sconto applicato: " + (1 - discount) * 100 + "%");
+
+    document.getElementById("showTotalPrice").innerHTML = "<h2> <b>Prezzo Finale: </b> </h2>" + totalPrice + "€";
 }
 
 document.getElementById("submitButton").addEventListener("click", totalPrice);
+

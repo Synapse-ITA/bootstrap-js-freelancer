@@ -14,10 +14,6 @@ POCIE24
 
 
 
-
-
-
-
 // FUNZIONE FORM
 
 function totalPrice() {
@@ -38,24 +34,35 @@ function totalPrice() {
 
     let discount = 1;
 
-    let discountCodes = [
-        { code: "YHDNU32", discount: 0.75 },
-        { code: "JANJC63", discount: 0.75 },
-        { code: "PWKCN25", discount: 0.75 },
-        { code: "SJDPO96", discount: 0.75 },
-        { code: "POCIE24", discount: 0.75 },
-    ];
+    if (discountCode !== "") {
+        let discountCodes = [
+            { code: "YHDNU32", discount: 0.75 },
+            { code: "JANJC63", discount: 0.75 },
+            { code: "PWKCN25", discount: 0.75 },
+            { code: "SJDPO96", discount: 0.75 },
+            { code: "POCIE24", discount: 0.75 },
+        ];
 
-    for (let i = 0; i < discountCodes.length; i++) {
-        if (discountCodes[i].code === discountCode) {
-            discount = discountCodes[i].discount;
-            break;
+        let validDiscountCode = false;
+
+        for (let i = 0; i < discountCodes.length; i++) {
+            if (discountCodes[i].code === discountCode) {
+                discount = discountCodes[i].discount;
+                validDiscountCode = true;
+                break;
+            }
+        }
+
+        if (!validDiscountCode) {
+            alert("Il codice promozionale non è valido.");
+            return;
         }
     }
 
     let totalPrice = (totalHourPrice * requestedHours * discount).toFixed(2);
     totalPrice = parseFloat(totalPrice);
-    console.log("---RESOCONTO---")
+    
+    console.log("--------- RESOCONTO ---------")
     console.log("Tipo di lavoro: " + typeOfWork);
     console.log("Tariffa oraria: " + totalHourPrice);
     console.log("Ore richieste: " + requestedHours);
